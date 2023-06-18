@@ -6,7 +6,7 @@
 /*   By: yaidriss <yaidriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 18:42:49 by yaidriss          #+#    #+#             */
-/*   Updated: 2023/06/18 17:27:24 by yaidriss         ###   ########.fr       */
+/*   Updated: 2023/06/18 17:42:47 by yaidriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,12 @@ char   *get_next_line(int fd)
         free(str);
         return NULL;
     }
-    while (str[i]&& rd && str[i - 1] != '\n')
+    while (rd && str[i - 1] != '\n')
     {
         i += rd;
+        if (str[0] == '\n')
+            break;
         rd = read(fd, str + i, BUFFER_SIZE - BUFFER_SIZE + 1);
-        // printf("-----> i : %d --->%c\n", i, str[i]);
         if (str[i] == '\n')
             i++;
     }
