@@ -6,19 +6,19 @@
 /*   By: yaidriss <yaidriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 18:42:49 by yaidriss          #+#    #+#             */
-/*   Updated: 2023/06/18 16:16:44 by yaidriss         ###   ########.fr       */
+/*   Updated: 2023/06/18 17:27:24 by yaidriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *get_next_line(int fd)
+char   *get_next_line(int fd)
 {
     int i = 0;
     int j = -1;
     int rd;
     char *line;
-    char *str;
+    static  char *str;
     str = malloc(99999);
 
     rd = read(fd, str, BUFFER_SIZE - BUFFER_SIZE + 1);
@@ -27,18 +27,18 @@ char *get_next_line(int fd)
         free(str);
         return NULL;
     }
-    while (rd > 0 && str[i] && str[i - 1] != '\n')
+    while (str[i]&& rd && str[i - 1] != '\n')
     {
         i += rd;
         rd = read(fd, str + i, BUFFER_SIZE - BUFFER_SIZE + 1);
+        // printf("-----> i : %d --->%c\n", i, str[i]);
         if (str[i] == '\n')
             i++;
     }
     line = ft_calloc(i + 1, 1);
-    while(str[++j])
+    while(++j < i && str[j])
        line[j] = str[j];
-    // printf("--->%s\n", line);
-    line[j] = '\0';
+    line[j] = 0;
     free(str);
     str = 0;
     return (line);  

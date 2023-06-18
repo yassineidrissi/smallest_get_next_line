@@ -6,7 +6,7 @@
 /*   By: yaidriss <yaidriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 15:52:47 by yaidriss          #+#    #+#             */
-/*   Updated: 2023/06/18 15:57:38 by yaidriss         ###   ########.fr       */
+/*   Updated: 2023/06/18 17:25:43 by yaidriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ char *ft_calloc(size_t count, size_t size)
     if (result == NULL)
         return NULL;    
     while(count--)
-        result[count] = '\0';
+        result[count] = 0;
     return result;
 }
