@@ -12,6 +12,10 @@
 
 #include "get_next_line.h"
 
+//! I add the get_next_line_utils only to check with tester 
+//! In the exam u can samply change the ft_calloc by malloc 
+//! There is no need to add get_next_line_utils file
+
 char   *get_next_line(int fd)
 {
     int i = 0;
@@ -33,8 +37,6 @@ char   *get_next_line(int fd)
             i++;
     }
     line = ft_calloc(i + 1, 1);
-    //! in the exam u can samply change it by malloc 
-    //!ther is no need to add get_next_line_utils file
     while(++j < i && str[j])
        line[j] = str[j];
     line[j] = 0;
